@@ -1,0 +1,13 @@
+node_modules
+dist
+dist-ssr
+.cache
+.npm
+.pnpm-store
+*.log
+.DS_Store
+coverage
+*.local
+*.tmp
+*.swp
+

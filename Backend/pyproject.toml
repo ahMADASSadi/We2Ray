@@ -1,0 +1,45 @@
+[project]
+name = "v2raybot"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "python-telegram-bot>=22.5",
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "pydantic>=2.0.0",
+    "ruff>=0.14.6",
+]
+
+
+[tool.ruff]
+line-length = 99
+exclude = [
+    "__pycache__",
+    "*.pyc",
+    "*.pyo",
+    "*.pyd",
+    ".venv",
+    "venv",
+    "ENV",
+    "env",
+    ".virtualenv",
+    "node_modules",
+    "*.db",
+    "*.sqlite3",
+    "*.sqlite",
+    "*.log",
+    ".DS_Store",
+    "Thumbs.db",
+    ".vscode",
+    ".AppleDouble",
+    ".LSOverride",
+    "*.egg-info",
+    "*.egg",
+    ".coverage",
+    ".tox",
+    ".nox",
+    ".cache",
+    "ehthumbs.db",
+    "Desktop.ini",
+]

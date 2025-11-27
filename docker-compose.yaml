@@ -1,0 +1,46 @@
+x-backend-build: &backend-build
+  context: ./Backend
+
+services:
+  backend:
+    build: *backend-build
+    image: v2raybot-backend
+    command: ["python", "api_client.py"]
+    environment:
+      TZ: ${TZ:-UTC}
+    volumes:
+      - ./Backend/config.json:/app/config.json
+      - ./Backend/v2ray_results.db:/app/v2ray_results.db
+    ports:
+      - "8000:8000"
+    hostname: localhost
+    restart: unless-stopped
+
+  bot:
+    build: *backend-build
+    image: v2raybot-backend
+    command: ["python", "telegram_client.py"]
+    environment:
+      BOT_TOKEN: ${BOT_TOKEN:-}
+      ADMIN_CHAT_ID: ${ADMIN_CHAT_ID:-}
+      TZ: ${TZ:-UTC}
+    volumes:
+      - ./Backend/config.json:/app/config.json
+      - ./Backend/v2ray_results.db:/app/v2ray_results.db
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./Frontend
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:8000}
+    image: v2raybot-frontend
+    ports:
+      - "4173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+networks:
+  default:
+    name: v2raybot

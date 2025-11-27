@@ -1,0 +1,67 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+venv/
+ENV/
+env/
+.virtualenv/
+.ruff_cache/
+node_modules/
+.env
+*.db
+*.sqlite3
+*.sqlite
+*.log
+
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# macOS
+.AppleDouble
+.LSOverride
+
+# Python egg info
+*.egg-info/
+*.egg
+
+# Test/coverage
+.coverage
+.tox/
+.nox/
+.cache/
+
+# OS junk files
+ehthumbs.db
+Desktop.ini
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+

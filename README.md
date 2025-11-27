@@ -138,7 +138,7 @@ Additional configuration values (SMTP credentials, GitHub link source, timeouts,
 
    ```env
    BOT_TOKEN=123456789:abcdef
-   ADMIN_CHAT_ID=328382010
+   ADMIN_CHAT_ID=1234567890
    TZ=UTC
    VITE_API_URL=http://localhost:8000
    ```
@@ -149,15 +149,15 @@ Additional configuration values (SMTP credentials, GitHub link source, timeouts,
    docker compose up -d --build
    ```
 
-   - `backend-api` exposes FastAPI on `localhost:8000`.
-   - `telegram-bot` runs `telegram_client.py`.
+   - `backend` exposes FastAPI on `localhost:8000`.
+   - `bot` runs `telegram_client.py`.
    - `frontend` serves the static React bundle on `http://localhost:4173`.
 
 3. Logs & lifecycle:
 
    ```bash
-   docker compose logs -f backend-api
-   docker compose logs -f telegram-bot
+   docker compose logs -f backend
+   docker compose logs -f bot
    docker compose down
    ```
 
@@ -193,7 +193,7 @@ All responses are typed in `Frontend/src/api/client.ts`, which can be used as re
   The compiled frontend hardcodes `VITE_API_URL`. When running outside Docker, set `VITE_API_URL=http://localhost:8000` before `npm run dev` or `docker compose build frontend`.
 
 - **Missing Python dependencies in Docker**  
-  The backend image installs dependencies with `uv sync`. If you add packages to `pyproject.toml`, regenerate `uv.lock` (`uv pip compile` / `uv sync`) and rebuild the image: `docker compose build backend-api telegram-bot`.
+  The backend image installs dependencies with `uv sync`. If you add packages to `pyproject.toml`, regenerate `uv.lock` (`uv pip compile` / `uv sync`) and rebuild the image: `docker compose build backend bot`.
 
 - **Config/DB changes not persisting**  
   Ensure the bind mounts in `docker-compose.yaml` point to `./Backend/config.json` and `./Backend/v2ray_results.db`. These files live on the host, so container restarts retain data.
